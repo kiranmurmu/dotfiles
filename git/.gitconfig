@@ -1,0 +1,11 @@
+[user]
+	name = Kiran Murmu
+	email = 44278642+kiranmurmu@users.noreply.github.com
+[core]
+	eol = lf
+	autocrlf = false
+	editor = vim
+[color]
+	ui = auto
+[init]
+	defaultBranch = main
