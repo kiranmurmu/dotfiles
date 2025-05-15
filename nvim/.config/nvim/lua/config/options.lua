@@ -34,7 +34,7 @@ vim.opt.signcolumn = "yes"
 -- decrease update time
 vim.opt.updatetime = 250
 -- decrease mapped sequence wait time (keymap wait time)
-vim.opt.timeoutlen = 500
+-- vim.opt.timeoutlen = 500
 -- configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true

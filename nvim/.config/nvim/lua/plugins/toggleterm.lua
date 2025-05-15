@@ -3,7 +3,6 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
-        open_mapping = [[<C-\>]],
         size = function(term)
             if term.direction == "horizontal" then
                 return vim.o.lines * 0.5
@@ -17,11 +16,12 @@ return {
             border = "curved",
         },
         on_create = function(term)
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-;>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<Esc>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
         end,
     },
     keys = {
-        { [[<C-\>]], mode = { "n" }, "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
+        { "<C-;>", mode = { "n", "v", "i" }, "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
     }
 }
