@@ -21,14 +21,15 @@ return {
             ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
         },
         appearance = {
-            nerd_font_variant = "mono"
+            nerd_font_variant = "mono",
         },
         cmdline = {
             keymap = {
                 preset = "none",
                 ["<C-y>"] = { "accept" },
                 ["<C-e>"] = { "cancel" },
-                ["<Tab>"] = { "show", "accept" },
+                ["<Tab>"] = { "show" },
+                ["<CR>"] = { "accept_and_enter", "fallback"  },
                 ["<C-n>"] = { "select_next", "fallback" },
                 ["<C-p>"] = { "select_prev", "fallback" },
                 ["<Left>"] = { "select_prev", "fallback" },
