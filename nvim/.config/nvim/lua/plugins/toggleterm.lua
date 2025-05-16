@@ -3,6 +3,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     opts = {
+        open_mapping = false,
         size = function(term)
             if term.direction == "horizontal" then
                 return vim.o.lines * 0.5
@@ -23,5 +24,5 @@ return {
     },
     keys = {
         { "<C-;>", mode = { "n", "v", "i" }, "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
-    }
+    },
 }

@@ -35,6 +35,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 250
 -- decrease mapped sequence wait time (keymap wait time)
 -- vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 0
 -- configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -51,4 +52,4 @@ vim.opt.scrolloff = 0
 -- show dialog for unsaved changes
 vim.opt.confirm = true
 -- show rounded window (global)
-vim.o.winborder = "rounded"
+-- vim.o.winborder = "rounded"
