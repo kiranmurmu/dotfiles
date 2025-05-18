@@ -70,24 +70,33 @@ find_git_branch () {
     done
 
     local xgit_dir="$xroot/.git"
-    local worktree_tag
+    local wtree_name
+    local wtree_tag
     local fline
     local c_green=$'\001\e[32m\002'
     local c_yellow=$'\001\e[33m\002'
+    local c_blue=$'\001\e[34m\002'
     local c_reset=$'\001\e[0m\002'
+    local c_bold=$'\001\e[1m\002'
 
     if [ -f "$xgit_dir" ]; then
         # if .git is a file it can be a worktree
         read fline < "$xgit_dir"
         xgit_dir="${fline#gitdir: }"
-        worktree_tag=" (worktree)"
+        xgit_dir="${xgit_dir%/}"
+        wtree_name="${xgit_dir##*/}"
+
+        if [[ -z $wtree_name ]]; then
+            wtree_name="???"
+        fi
+        wtree_tag=" ${c_bold}(${c_blue}${wtree_name}${c_reset}${c_bold})"
     fi
     if [ -f "$xgit_dir/HEAD" ]; then
         read fline < "$xgit_dir/HEAD"
         if [[ "$fline" == "ref:"* ]]; then
-            _git_branch=" [${c_green}${fline#*/*/}${c_reset}${worktree_tag}]"
+            _git_branch=" ${c_bold}[${c_green}${fline#*/*/}${c_reset}${wtree_tag}${c_bold}]${c_reset}"
         else
-            _git_branch=" [${c_yellow}${fline:0:7}${c_reset}${worktree_tag}]"
+            _git_branch=" ${c_bold}[${c_yellow}${fline:0:7}${c_reset}${wtree_tag}${c_bold}]${c_reset}"
         fi
     else
         _git_branch=""
