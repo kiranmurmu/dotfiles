@@ -28,25 +28,60 @@ return {
                 preset = "none",
                 ["<C-y>"] = { "accept" },
                 ["<C-e>"] = { "cancel" },
-                ["<Tab>"] = { "show" },
+                ["<Tab>"] = { "show", "select_and_accept" },
                 ["<CR>"] = { "accept_and_enter", "fallback"  },
                 ["<C-n>"] = { "select_next", "fallback" },
                 ["<C-p>"] = { "select_prev", "fallback" },
                 ["<Left>"] = { "select_prev", "fallback" },
                 ["<Right>"] = { "select_next", "fallback" },
             },
+            completion = {
+                menu = { auto_show = false },
+                list = {
+                    selection = { preselect = false },
+                },
+            },
         },
         completion = {
-            documentation = { auto_show = false },
+            documentation = {
+                auto_show = false,
+                auto_show_delay_ms = 200,
+                window = {
+                    border = "none",
+                    max_width = math.floor(vim.o.columns * 0.4),
+                    max_height = math.floor(vim.o.lines * 0.5),
+                },
+            },
             list = { selection = { auto_insert = false } },
+            accept = { auto_brackets = { enabled = false } },
+            menu = {
+                draw = {
+                    treesitter = { "lsp" },
+                    columns = {
+                        { "label", gap = 2 }, { "kind_icon", gap = 1, "kind" },
+                    },
+                },
+            },
+            trigger = {
+                show_on_accept_on_trigger_character = false,
+            },
         },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer", "lazydev" },
             providers = {
                 lazydev = {
                     name = "LazyDev",
                     module = "lazydev.integrations.blink",
                     score_offset = 100,
+                },
+                snippets = {
+                    name = "Snippets",
+                    module = "blink.cmp.sources.snippets",
+                    min_keyword_length = 3,
+                    opts = {
+                        friendly_snippets = false,
+                        search_paths = {vim.fn.stdpath("config") .. "/snippets/nvim"},
+                    },
                 },
             },
         },
@@ -57,6 +92,13 @@ return {
                 force_version = blink_version,
             },
         },
-        signature = { enabled = true },
+        signature = {
+            enabled = true,
+            window = {
+                border = "single",
+                max_width = math.floor(vim.o.columns * 0.4),
+                max_height = math.floor(vim.o.lines * 0.5),
+            },
+        },
     },
 }
