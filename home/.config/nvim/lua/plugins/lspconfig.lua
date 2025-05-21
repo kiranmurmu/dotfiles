@@ -1,8 +1,16 @@
 -- lua/plugins/lspconfig.lua
 return {
-    "neovim/nvim-lspconfig",
-    -- dependencies = { "saghen/blink.cmp" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+        "saghen/blink.cmp",
+    },
     opts = {
+        ensure_installed = { "lua_ls" },
+        automatic_enable = true or {
+            exclude = { "lua_ls" },
+        },
         servers = {
             lua_ls = {
                 settings = {
