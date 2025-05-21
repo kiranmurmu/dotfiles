@@ -17,12 +17,20 @@ return colorscheme("kanagawa", {
         lazy = false,
         priority = 1000,
         config = function(self)
+            require(self.name).setup(self.opts)
             vim.cmd.colorscheme(self.colorscheme)
         end
     },
     themes = {
-        { "rebelot/kanagawa.nvim", name = "kanagawa", opts = {} },
         { "folke/tokyonight.nvim", name = "tokyonight", opts = {} },
         { "catppuccin/nvim", name = "catppuccin", opts = {} },
+        {
+            "rebelot/kanagawa.nvim", name = "kanagawa",
+            opts = {
+                colors = {
+                    theme = { all = { ui = { bg_gutter = "none" } } },
+                },
+            },
+        },
     },
 })
