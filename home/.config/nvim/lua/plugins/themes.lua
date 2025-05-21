@@ -2,22 +2,22 @@
 
 local function colorscheme(name, config)
     for _, theme in ipairs(config.themes) do
-        if theme.name == name then
+        if name:match(theme.name) then
             for key, value in pairs(config.opts) do
                 theme[key] = value
             end
-            return theme
+            theme["colorscheme"] = name
         end
     end
     return config.themes
 end
 
-return colorscheme("catppuccin", {
+return colorscheme("kanagawa", {
     opts = {
         lazy = false,
         priority = 1000,
         config = function(self)
-            vim.cmd.colorscheme(self.name)
+            vim.cmd.colorscheme(self.colorscheme)
         end
     },
     themes = {
