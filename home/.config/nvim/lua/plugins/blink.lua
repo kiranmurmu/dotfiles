@@ -53,7 +53,7 @@ return {
                 },
             },
             list = { selection = { auto_insert = false } },
-            accept = { auto_brackets = { enabled = false } },
+            accept = { auto_brackets = { enabled = true } },
             menu = {
                 draw = {
                     treesitter = { "lsp" },
