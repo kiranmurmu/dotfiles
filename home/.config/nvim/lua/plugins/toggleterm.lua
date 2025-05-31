@@ -24,6 +24,6 @@ return {
         end,
     },
     keys = {
-        { "<M-;>", mode = { "n", "v", "i" }, "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
+        { "<M-;>", mode = { "n", "v", "i" }, "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal window" },
     },
 }
