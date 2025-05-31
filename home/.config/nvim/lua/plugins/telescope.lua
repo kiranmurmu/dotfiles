@@ -34,6 +34,7 @@ return {
             { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope buffers" },
             { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope diagnostics" },
             { "<leader>fh", mode = { "n" }, builtin.help_tags, desc = "Telescope help tags" },
+            { "<leader>fk", mode = { "n" }, builtin.keymaps, desc = "Telescope find keymaps" },
             { "<leader>fe", mode = { "n" }, file_browser.file_browser, desc = "Telescope file browser" },
         }
     end
