@@ -2,6 +2,7 @@
 
 # import datetime
 
+from kitty.constants import appname, str_version
 from kitty.fast_data_types import Screen, get_options, get_boss
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, as_rgb, draw_title
 from kitty.utils import color_as_int
@@ -73,14 +74,11 @@ def _draw_left_status(
     return end
 
 
-def _draw_right_status(
-    screen: Screen,
-    is_last: bool,
-    term: str = " [kitty]",
-) -> int:
+def _draw_right_status(screen: Screen, is_last: bool) -> int:
     if not is_last:
         return
 
+    term_info = f" [{appname} v{str_version}]"
     tab = boss.active_tab
     title = tab.title.strip()
     inactive_fg = opts.inactive_tab_foreground
@@ -89,7 +87,7 @@ def _draw_right_status(
     active_fg = opts.active_tab_foreground
     active_bg = opts.active_tab_background
 
-    right_status_length = calc_draw_spaces(title, term)
+    right_status_length = calc_draw_spaces(title, term_info)
     draw_spaces = screen.columns - screen.cursor.x - right_status_length
 
     if draw_spaces > 0:
@@ -97,10 +95,9 @@ def _draw_right_status(
 
     cells = [
         ((inactive_fg, inactive_bg), title),
-        ((active_fg, active_bg), term),
+        ((active_fg, active_bg), term_info),
     ]
 
-    # screen.cursor.fg = as_rgb(color_as_int(active_fg))
     for color, status in cells:
         screen.cursor.fg = as_rgb(color_as_int(color[0]))
         screen.cursor.bg = as_rgb(color_as_int(color[1]))
