@@ -1,7 +1,3 @@
-# pyright: reportMissingImports=false
-
-# import datetime
-
 from kitty.constants import appname, str_version
 from kitty.fast_data_types import Screen, get_options, get_boss
 from kitty.tab_bar import DrawData, ExtraData, TabBarData, as_rgb, draw_title
@@ -24,11 +20,12 @@ def _draw_icon(screen: Screen, index: int, symbol: str = None) -> int:
     if index != 1:
         return
 
-    tabs = boss.active_tab_manager.tabs
+    active_window = boss.active_tab.active_window
+    window_id = boss.active_tab.windows.all_windows.index(active_window)
     active_fg = opts.active_tab_foreground
     active_bg = opts.active_tab_background
 
-    symbol = symbol or f"[{len(tabs)}]"
+    symbol = symbol or f"[{window_id + 1}]"
     fg, bg = screen.cursor.fg, screen.cursor.bg
 
     screen.cursor.fg = as_rgb(color_as_int(active_fg))
@@ -55,11 +52,7 @@ def _draw_left_status(
     draw_title(draw_data, screen, tab, index)
     trailing_spaces = min(max_title_length - 1, draw_data.trailing_spaces)
     max_title_length -= trailing_spaces
-    extra = screen.cursor.x - before - max_title_length
 
-    if extra > 0:
-        screen.cursor.x -= extra + 1
-        screen.draw("…")
     if trailing_spaces:
         screen.draw(" " * trailing_spaces)
     end = screen.cursor.x
@@ -78,24 +71,28 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     if not is_last:
         return
 
-    term_info = f" [{appname} v{str_version}]"
-    tab = boss.active_tab
-    title = tab.title.strip()
+    title = boss.active_tab.title
+    title = f" {' ' * 3}{title.strip()}"
+    about = f" [{appname} v{str_version}]"
+
     inactive_fg = opts.inactive_tab_foreground
     inactive_bg = opts.inactive_tab_background
-
     active_fg = opts.active_tab_foreground
     active_bg = opts.active_tab_background
 
-    right_status_length = calc_draw_spaces(title, term_info)
+    right_status_length = calc_draw_spaces(title, about)
     draw_spaces = screen.columns - screen.cursor.x - right_status_length
 
     if draw_spaces > 0:
         screen.draw(" " * draw_spaces)
+    elif screen.cursor.x >= screen.columns:
+        about = ""
+    elif draw_spaces < 0:
+        title = title[:(draw_spaces - 3)] + "..."
 
     cells = [
         ((inactive_fg, inactive_bg), title),
-        ((active_fg, active_bg), term_info),
+        ((active_fg, active_bg), about),
     ]
 
     for color, status in cells:
@@ -122,8 +119,7 @@ def draw_tab(
     extra_data: ExtraData,
 ) -> int:
     _draw_icon(screen, index)
-    # Set cursor to where `left_status` ends,
-    # instead `right_status`, to enable `open new tab` feature
+
     end = _draw_left_status(
         draw_data,
         screen,
