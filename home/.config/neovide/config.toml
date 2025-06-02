@@ -1,3 +1,5 @@
+# neovide configs
+
 fork = false
 frame = "full"
 idle = true
