@@ -3,15 +3,23 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {
-        modes = { char = { jump_labels = true } },
+        modes = {
+            char = {
+                jump_labels = false,
+                highlight = { backdrop = false },
+                char_actions = function ()
+                    return { [";"] = "next", [","] = "prev" }
+                end
+            },
+        },
         prompt = { enabled = false },
+        highlight = { backdrop = true },
     },
     keys = function()
         local flash = require("flash")
         return {
-            { "<leader>sf", mode = { "n", "x", "o" }, flash.jump, desc = "Flash Jump" },
-            { "<leader>sa", mode = { "n", "x", "o" }, flash.treesitter, desc = "Flash Treesitter" },
-            { "<leader>ss", mode = { "n", "x", "o" }, flash.treesitter_search, desc = "Treesitter Search" },
+            { "gs", mode = { "n", "x" }, flash.jump, desc = "Flash: jump" },
+            { "gl", mode = { "n", "o" }, flash.treesitter, desc = "Flash: treesitter" },
         }
     end
 }
