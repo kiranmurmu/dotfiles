@@ -24,7 +24,7 @@ vim.opt.clipboard = "unnamedplus"
 -- set file default encoding
 vim.opt.encoding = "utf-8"
 -- show which line your cursor is on
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 -- save undo history
 vim.opt.undofile = false
 -- don't show the mode, since it's already in the status line
@@ -37,8 +37,8 @@ vim.opt.updatetime = 250
 -- vim.opt.timeoutlen = 500
 vim.opt.ttimeoutlen = 0
 -- configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+-- vim.opt.splitright = true
+-- vim.opt.splitbelow = true
 -- case-insensitive searching UNLESS \C or one or more capital letters
 vim.opt.ignorecase = false
 vim.opt.smartcase = false
