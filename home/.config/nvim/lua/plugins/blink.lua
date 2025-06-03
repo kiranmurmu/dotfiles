@@ -8,7 +8,7 @@ return {
     opts = {
         keymap = {
             preset = "none",
-            ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-h>"] = { "show", "show_documentation", "hide_documentation" },
             ["<C-e>"] = { "cancel", "fallback" },
             ["<C-y>"] = { "accept", "fallback" },
             ["<Tab>"] = { "select_and_accept", "fallback" },
