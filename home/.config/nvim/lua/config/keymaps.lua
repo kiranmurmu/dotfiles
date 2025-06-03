@@ -4,15 +4,16 @@ vim.keymap.set({ "n", "x" }, "<Space>", "<Nop>", { silent = true, desc = "Remove
 vim.keymap.set({ "n" }, "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlights" })
 -- Use <C-\> key to enter terminal mode. Does nothing in normal mode
 vim.keymap.set(
-    { "n" }, "<C-\\>",
+    { "n" }, "<C-S-\\>",
     function()
         if vim.api.nvim_get_mode().mode == "nt" then
-            return vim.cmd("startinsert")
-        else
-            return "<Nop>"
+            vim.cmd("startinsert")
+        -- else
+        --     return "<Nop>"
         end
     end,
     { silent = true, desc = "Toggle terminal mode" }
 )
--- Use <C-\> key to exit terminal mode
-vim.keymap.set({ "t" }, "<C-\\>", "<C-\\><C-n>", { silent = true, desc = "Toggle terminal mode" })
+-- Use <C-\> key to exit terminal mode, use <C-S-\><C-n> key to force exit terminal mode
+vim.keymap.set({ "t" }, "<C-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })
+vim.keymap.set({ "t" }, "<C-S-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })

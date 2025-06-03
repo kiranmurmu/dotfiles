@@ -2,7 +2,7 @@
 return {
     "akinsho/toggleterm.nvim",
     version = "*",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     opts = {
         open_mapping = false,
         size = function(term)
@@ -15,7 +15,8 @@ return {
         shade_terminals = true,
         insert_mappings = false,
         hidden = true,
-        highlights = {},
+        -- disable highlights (darken terminal)
+        highlights = { highlights = {} },
         display_name = " Terminal ",
         direction = "float",
         float_opts = {
@@ -23,25 +24,26 @@ return {
             title_pos = "center",
         },
         on_create = function(term)
-            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<M-;>", "<cmd>close<CR>", { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<Esc>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
         end,
     },
-    config = function(self)
-        ---@diagnostic disable-next-line: missing-fields
-        require("toggleterm.config").set(self.opts.highlights)
-    end,
     keys = function(self)
         local terminals = {}
         local toggleterm = require("toggleterm.terminal").Terminal:new(self.opts)
         -- Toggle terminal window
         function terminals.toggleterm()
-            toggleterm:toggle()
+            if vim.api.nvim_get_mode().mode == "nt" then
+                vim.cmd("startinsert")
+            else
+                toggleterm:toggle()
+            end
         end
         -- Return keymaps
         return {
-            { "<M-;>", mode = { "n", "v", "i" }, terminals.toggleterm, desc = "Toggle Terminal window" },
+            { "<C-\\>", mode = { "n", "v", "i" }, terminals.toggleterm, desc = "Toggle Terminal window" },
         }
     end,
 }
