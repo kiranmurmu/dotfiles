@@ -1,6 +1,14 @@
 -- lua/plugins/gitsigns.lua
 return {
-    "lewis6991/gitsigns.nvim", opts = {},
+    "lewis6991/gitsigns.nvim",
+    opts = {
+        preview_config = {
+            style = "minimal",
+            relative = "cursor",
+            row = 1,
+            col = 0
+        },
+    },
     keys = function()
         local methods = {}
         local gitsigns = require("gitsigns")
