@@ -2,18 +2,16 @@
 vim.keymap.set({ "n", "x" }, "<Space>", "<Nop>", { silent = true, desc = "Remove default keybind" })
 -- Clear search highlights when pressing <Esc> in normal mode
 vim.keymap.set({ "n" }, "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlights" })
--- Use <C-\> key to enter terminal mode. Does nothing in normal mode
+-- Use <M-\> key to enter terminal (t) mode when mode is normal terminal (nt)
 vim.keymap.set(
-    { "n" }, "<C-S-\\>",
+    { "n" }, "<M-\\>",
     function()
         if vim.api.nvim_get_mode().mode == "nt" then
             vim.cmd("startinsert")
-        -- else
-        --     return "<Nop>"
         end
     end,
-    { silent = true, desc = "Toggle terminal mode" }
+    { silent = true, desc = "Enter terminal mode" }
 )
--- Use <C-\> key to exit terminal mode, use <C-S-\><C-n> key to force exit terminal mode
+-- Use <C-\> and <M-\> key to exit terminal mode, use <C-S-\><C-n> key to force exit terminal mode
 vim.keymap.set({ "t" }, "<C-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })
-vim.keymap.set({ "t" }, "<C-S-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })
+vim.keymap.set({ "t" }, "<M-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })
