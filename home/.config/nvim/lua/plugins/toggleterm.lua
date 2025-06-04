@@ -12,6 +12,7 @@ return {
                 return vim.o.columns * 0.5
             end
         end,
+        dir = "%:p:h",
         shade_terminals = true,
         insert_mappings = false,
         hidden = true,
@@ -28,6 +29,9 @@ return {
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<Esc>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
+        end,
+        on_open = function(term)
+            term:change_dir("#:p:h")
         end,
     },
     keys = function(self)
