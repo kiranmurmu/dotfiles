@@ -25,8 +25,8 @@ return {
             title_pos = "center",
         },
         on_create = function(term)
-            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
-            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-\\><C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-\\><C-\\>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<Esc>", "<cmd>close<CR>", { noremap = true, silent = true })
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
         end,
@@ -47,7 +47,7 @@ return {
         end
         -- Return keymaps
         return {
-            { "<C-\\>", mode = { "n", "v", "i" }, terminals.toggleterm, desc = "Toggle Terminal window" },
+            { "<C-\\><C-\\>", mode = { "n", "v", "i" }, terminals.toggleterm, desc = "Toggle Terminal window" },
         }
     end,
 }
