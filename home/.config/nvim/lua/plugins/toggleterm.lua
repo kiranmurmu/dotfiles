@@ -31,7 +31,10 @@ return {
             vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
         end,
         on_open = function(term)
-            term:change_dir("#:p:h")
+            local dir = vim.fn.expand("#:p:h")
+            if term.dir == dir then return end
+            term:send({ string.format("cd %s", dir)})
+            term.dir = dir
         end,
     },
     keys = function(self)
