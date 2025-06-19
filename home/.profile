@@ -39,3 +39,5 @@ if [ -d "$HOME/.cargo/bin" ] ; then
         *) PATH="$HOME/.cargo/bin:$PATH" ;;
     esac
 fi
+
+export JUNEST_HOME="$HOME/.rootfs"
