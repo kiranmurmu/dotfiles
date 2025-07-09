@@ -16,26 +16,16 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    case :$PATH:
-        in *:$HOME/bin:*) ;;
-        *) PATH="$HOME/bin:$PATH" ;;
-    esac
-fi
+USERPATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    case :$PATH:
-        in *:$HOME/.local/bin:*) ;;
-        *) PATH="$HOME/.local/bin:$PATH" ;;
-    esac
-fi
+# set PATH so it includes user's private path if it exists
+for path in ${USERPATH//:/ } ; do
+    if [ -d "$path" ] ; then
+        case :$PATH:
+            in *:$path:*) ;;
+            *) PATH="$path:$PATH" ;;
+        esac
+    fi
+done
 
-# set PATH so it includes cargo's private bin if it exists
-if [ -d "$HOME/.cargo/bin" ] ; then
-    case :$PATH:
-        in *:$HOME/.cargo/bin:*) ;;
-        *) PATH="$HOME/.cargo/bin:$PATH" ;;
-    esac
-fi
+export USERPATH
