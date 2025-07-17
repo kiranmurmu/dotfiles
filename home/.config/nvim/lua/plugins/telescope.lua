@@ -13,6 +13,15 @@ return {
             selection_caret = "  ",
             entry_prefix = "  ",
         },
+        pickers = {
+            buffers = {
+                mappings = {
+                    i = {
+                        ["<M-d>"] = require("telescope.actions").delete_buffer,
+                    },
+                },
+            },
+        },
         extensions = {
             file_browser = {
                 hidden = true,
