@@ -14,3 +14,5 @@ vim.keymap.set(
 )
 -- Exit terminal mode, use <C-S-\><C-n> key to force exit terminal mode
 vim.keymap.set({ "t" }, "<C-\\><C-\\>", "<C-\\><C-n>", { silent = true, desc = "Exit terminal mode" })
+vim.keymap.set({ "n" }, "<leader>bc", "<cmd>close<CR>", { silent = true, desc = "Close current buffer" })
+vim.keymap.set({ "n" }, "<leader>bd", "<cmd>bdelete<CR>", { silent = true, desc = "Delete current buffer" })
