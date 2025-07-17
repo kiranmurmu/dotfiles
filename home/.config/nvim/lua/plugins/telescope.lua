@@ -12,6 +12,12 @@ return {
             prompt_prefix = "  ",
             selection_caret = "  ",
             entry_prefix = "  ",
+            mappings = {
+                i = {
+                    ["<C-u>"] = require("telescope.actions").results_scrolling_up,
+                    ["<C-d>"] = require("telescope.actions").results_scrolling_down,
+                },
+            },
         },
         pickers = {
             buffers = {
