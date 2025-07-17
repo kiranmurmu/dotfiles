@@ -46,12 +46,17 @@ return {
         local file_browser = require("telescope").extensions.file_browser
         return {
             { "<leader>ff", mode = { "n" }, builtin.find_files, desc = "Telescope find files" },
-            { "<leader>fg", mode = { "n" }, builtin.live_grep, desc = "Telescope live grep" },
-            { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope buffers" },
-            { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope diagnostics" },
-            { "<leader>fh", mode = { "n" }, builtin.help_tags, desc = "Telescope help tags" },
-            { "<leader>fk", mode = { "n" }, builtin.keymaps, desc = "Telescope find keymaps" },
-            { "<leader>fe", mode = { "n" }, file_browser.file_browser, desc = "Telescope file browser" },
+            { "<leader>gg", mode = { "n" }, builtin.live_grep, desc = "Telescope live grep" },
+            { "<leader>dd", mode = { "n" }, builtin.diagnostics, desc = "Telescope diagnostics" },
+            { "<leader>bb", mode = { "n" }, builtin.builtin, desc = "Telescope builtin pickers" },
+            { "<leader>ee", mode = { "n" }, file_browser.file_browser, desc = "Telescope file browser" },
+            { "<leader>hh", mode = { "n" }, builtin.help_tags, desc = "Telescope help tags" },
+            { "<leader>kk", mode = { "n" }, builtin.keymaps, desc = "Telescope find keymaps" },
+            { "<leader>rr", mode = { "n" }, builtin.registers, desc = "Telescope find registers" },
+            { "<leader>jj", mode = { "n" }, builtin.jumplist, desc = "Telescope find jumplist" },
+            { "<leader>mm", mode = { "n" }, builtin.marks, desc = "Telescope find marks" },
+            { "<leader>ll", mode = { "n" }, builtin.buffers, desc = "Telescope list buffers" },
+            { "<leader>ss", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope fuzzy find" },
         }
     end
 }
