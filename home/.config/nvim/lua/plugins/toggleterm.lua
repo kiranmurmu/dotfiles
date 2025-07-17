@@ -17,7 +17,10 @@ return {
         insert_mappings = false,
         hidden = true,
         -- disable highlights (darken terminal)
-        highlights = { highlights = {} },
+        highlights = {
+            border = "Normal",
+            background = "Normal",
+        },
         display_name = " Terminal ",
         direction = "float",
         float_opts = {
