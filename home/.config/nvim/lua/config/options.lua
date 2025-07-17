@@ -53,3 +53,6 @@ vim.opt.scrolloff = 0
 vim.opt.confirm = true
 -- show rounded window (global)
 -- vim.o.winborder = "rounded"
+-- set mapleader to <Space> and maplocalleader to <Bslash>
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
