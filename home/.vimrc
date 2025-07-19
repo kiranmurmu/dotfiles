@@ -1,0 +1,13 @@
+set number
+set relativenumber
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set nowrap
+set incsearch
+set ignorecase
+set smartcase
+set showmode
+set showmatch
+set hlsearch
+set history=1000
