@@ -49,13 +49,29 @@ return {
             end,
         })
 
+        terms.lazygit = vim.tbl_deep_extend("keep", self.opts, {
+            display_name = " LazyGit ",
+            cmd = "lazygit",
+            dir = "%:p:h",
+            float_opts = {
+                width = width,
+                height = height,
+                row = row,
+                col = col,
+            },
+            on_create = function(term)
+                vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<Esc>", "<cmd>close<CR>", { noremap = true, silent = true })
+                vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<C-c>", "<cmd>close<CR>", { noremap = true, silent = true })
+            end,
+        })
+
         return terms
     end,
     keys = function(self)
         local Terminal = require("toggleterm.terminal").Terminal
         local terminal = self:terminals()
         local default = Terminal:new(terminal.default)
-        function terminals.toggleterm()
+        local lazygit = Terminal:new(terminal.lazygit)
 
         function terminal.toggle_default()
             if vim.api.nvim_get_mode().mode == "nt" then
@@ -64,10 +80,14 @@ return {
                 default:toggle()
             end
         end
-        -- Return keymaps
+
+        function terminal.open_lazygit()
+            lazygit:open()
+        end
 
         return {
             { "<C-\\><C-\\>", mode = { "n", "v", "i" }, terminal.toggle_default, desc = "Toggle Terminal window" },
+            { "<leader>gg", mode = { "n" }, terminal.open_lazygit, desc = "Open LazyGit window" },
         }
     end,
 }
