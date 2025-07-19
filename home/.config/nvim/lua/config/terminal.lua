@@ -1,5 +1,5 @@
 -- Configure terminal to start in insert mode by default
-local LOCAL_GROUP = vim.api.nvim_create_augroup("user.terminal.config", { clear = false })
+local augroup = vim.api.nvim_create_augroup("user.terminal.config", { clear = false })
 
 local function start_in_insert()
     local mode = vim.api.nvim_get_mode().mode
@@ -10,6 +10,6 @@ end
 
 vim.api.nvim_create_autocmd({ "TermOpen", "BufWinEnter" }, {
     pattern = { "term://*" },
-    group = LOCAL_GROUP,
+    group = augroup,
     callback = start_in_insert,
 })
