@@ -20,8 +20,8 @@ return {
     },
     terminals = function(self)
         local width = math.ceil(math.min(vim.o.columns, math.max(80, vim.o.columns * 0.8 - 4)))
-        local height = math.ceil(math.min(vim.o.lines, math.max(20, vim.o.lines * 0.8 - 1)))
-        local row = math.ceil(vim.o.lines - height) * 0.5 - 2
+        local height = math.ceil(math.min(vim.o.lines, math.max(20, vim.o.lines * 0.8 - 2)))
+        local row = math.ceil(vim.o.lines - height) * 0.5 - 1
         local col = math.ceil(vim.o.columns - width) * 0.5 - 1
         local terms = {}
 
