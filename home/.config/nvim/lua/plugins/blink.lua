@@ -7,7 +7,8 @@ return {
     opts = {
         keymap = {
             preset = "none",
-            ["<C-h>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-h>"] = { "show", "hide" },
+            ["<C-k>"] = { "show_documentation", "hide_documentation", "fallback" },
             ["<C-e>"] = { "cancel", "fallback" },
             ["<C-y>"] = { "accept", "fallback" },
             ["<Tab>"] = { "select_and_accept", "fallback" },
@@ -25,6 +26,7 @@ return {
         cmdline = {
             keymap = {
                 preset = "none",
+                ["<C-h>"] = { "show", "hide" },
                 ["<C-y>"] = { "accept" },
                 ["<C-e>"] = { "cancel" },
                 ["<Tab>"] = { "show", "select_and_accept" },
@@ -35,9 +37,9 @@ return {
                 ["<Right>"] = { "select_next", "fallback" },
             },
             completion = {
-                menu = { auto_show = false },
+                menu = { auto_show = true },
                 list = {
-                    selection = { preselect = false },
+                    selection = { preselect = false, auto_insert = true },
                 },
             },
         },
@@ -46,7 +48,7 @@ return {
                 auto_show = false,
                 auto_show_delay_ms = 200,
                 window = {
-                    border = "none",
+                    border = "single",
                     max_width = math.floor(vim.o.columns * 0.4),
                     max_height = math.floor(vim.o.lines * 0.5),
                 },
