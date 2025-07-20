@@ -1,8 +1,7 @@
 -- lua/plugins/blink.lua
-local blink_version = "v1.1.1"
 return {
     "saghen/blink.cmp",
-    version = blink_version,
+    version = "1.*",
     dependencies = { "folke/lazydev.nvim" },
     opts_extend = { "sources.default" },
     opts = {
@@ -89,7 +88,6 @@ return {
             implementation = "prefer_rust_with_warning",
             prebuilt_binaries = {
                 download = true,
-                force_version = blink_version,
             },
         },
         signature = {
