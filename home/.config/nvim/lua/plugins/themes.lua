@@ -40,7 +40,7 @@ return colorscheme("kanagawa", {
                         LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         TabLineFill = { bg = theme.ui.bg_m1 },
-                        TabLineSel = { bg = theme.ui.bg_p1 },
+                        TabLineSel = { bg = theme.ui.bg },
                         TabLine = { bg = theme.ui.bg_m2 },
                     }
                 end,
