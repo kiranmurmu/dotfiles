@@ -50,13 +50,14 @@ return {
             { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope find diagnostics" },
             { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope find buffers" },
             { "<leader>ft", mode = { "n" }, builtin.builtin, desc = "Telescope find pickers" },
-            { "<leader>fs", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope fuzzy search" },
+            { "<leader>fz", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope fuzzy find" },
             { "<leader>fe", mode = { "n" }, file_browser.file_browser, desc = "Telescope file explorer" },
             { "<leader>fh", mode = { "n" }, builtin.help_tags, desc = "Telescope find help-tags" },
             { "<leader>fk", mode = { "n" }, builtin.keymaps, desc = "Telescope find keymaps" },
             { "<leader>fr", mode = { "n" }, builtin.registers, desc = "Telescope find registers" },
             { "<leader>fj", mode = { "n" }, builtin.jumplist, desc = "Telescope find jumplist" },
             { "<leader>fm", mode = { "n" }, builtin.marks, desc = "Telescope find marks" },
+            { "<leader>fs", mode = { "n" }, builtin.spell_suggest, desc = "Telescope spell suggest" },
         }
     end
 }
