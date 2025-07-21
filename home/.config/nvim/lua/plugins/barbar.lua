@@ -8,6 +8,10 @@ return {
     },
     init = function()
         vim.g.barbar_auto_setup = false
+        vim.keymap.set({ "n" }, "<leader>]]", "<cmd>BufferNext<CR>", { silent = true, desc = "Barbar: Buffer Next" })
+        vim.keymap.set({ "n" }, "<leader>[[", "<cmd>BufferPrevious<CR>", { silent = true, desc = "Barbar: Buffer Previous" })
+        vim.keymap.set({ "n" }, "<leader>{{", "<cmd>BufferFirst<CR>", { silent = true, desc = "Barbar: Buffer First" })
+        vim.keymap.set({ "n" }, "<leader>}}", "<cmd>BufferLast<CR>", { silent = true, desc = "Barbar: Buffer Last" })
     end,
     opts = {
         auto_hide = false,
