@@ -15,29 +15,30 @@ return {
         animation = false,
         maximum_padding = 0,
         minimum_padding = 0,
-        no_name_title = "[No Name]",
         insert_at_end = true,
         tabpages = false,
         icons = {
             buffer_index = false,
-            buffer_number = false,
+            buffer_number = true,
+            filename = false,
             button = "",
             gitsigns = { enabled = false },
             separator = {
-                left = "▏", right = "▕",
+                left = "▏", right = "",
             },
             scroll = {
                 left = "", right = "",
             },
-            separator_at_end = false,
+            separator_at_end = true,
             modified = { button = "" },
+            filetype = { enabled = false },
             pinned = {
                 button = "",
-                filename = true,
+                filename = false,
             },
             inactive = {
                 separator = {
-                    left = "▏", right = "▕",
+                    left = "▏", right = "",
                 },
             },
             visible = {
