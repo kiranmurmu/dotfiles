@@ -28,7 +28,18 @@ return colorscheme("kanagawa", {
             "rebelot/kanagawa.nvim", name = "kanagawa",
             opts = {
                 colors = {
-                    theme = { all = { ui = { bg_gutter = "none" } } },
+                    theme = {
+                        wave = {
+                            ui = {
+                                bg_visual  = "#363646",
+                            },
+                        },
+                        all = {
+                            ui = {
+                                bg_gutter = "none",
+                            },
+                        },
+                    },
                 },
                 overrides = function(colors)
                     local theme = colors.theme
@@ -42,6 +53,10 @@ return colorscheme("kanagawa", {
                         TabLineFill = { bg = theme.ui.bg_m1 },
                         TabLineSel = { bg = theme.ui.bg_p1 },
                         TabLine = { bg = theme.ui.bg_m1 },
+                        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+                        PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
+                        PmenuSbar = { bg = theme.ui.bg_m1 },
+                        PmenuThumb = { bg = theme.ui.bg_p2 },
                     }
                 end,
             },
