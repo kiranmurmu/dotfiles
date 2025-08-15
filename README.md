@@ -1,4 +1,4 @@
-# Kiran Murmu's Dotfiles and Configs
+# My Dotfiles and Configs
 
 These are my personal Dotfiles and Neovim configurations.
 
