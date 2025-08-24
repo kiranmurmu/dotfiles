@@ -9,3 +9,4 @@ set showmode
 set showmatch
 set hlsearch
 set history=1000
+colorscheme elflord
