@@ -38,6 +38,9 @@ return colorscheme("kanagawa", {
                             ui = {
                                 bg_gutter = "none",
                             },
+                            syn = {
+                                constant   = "none",
+                            },
                         },
                     },
                 },
