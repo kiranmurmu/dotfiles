@@ -18,8 +18,8 @@ return {
     keys = function()
         local flash = require("flash")
         return {
-            { "gs", mode = { "n", "x" }, flash.jump, desc = "Flash: search jump" },
-            { "gl", mode = { "n", "o" }, flash.treesitter, desc = "Flash: location select" },
+            { "gl", mode = { "n", "x" }, flash.jump, desc = "Flash: location jump" },
+            { "gs", mode = { "n", "o" }, flash.treesitter, desc = "Flash: selection with treesitter" },
         }
     end
 }
