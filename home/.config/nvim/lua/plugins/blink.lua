@@ -7,8 +7,7 @@ return {
     opts = {
         keymap = {
             preset = "none",
-            ["<C-k>"] = { "show", "hide" },
-            ["<C-l>"] = { "show_documentation", "hide_documentation", "show_signature", "hide_signature" },
+            ["<C-k>"] = { "show", "hide", "fallback" },
             ["<C-e>"] = { "cancel", "fallback" },
             ["<C-y>"] = { "accept", "fallback" },
             ["<Tab>"] = { "select_and_accept", "fallback" },
@@ -18,6 +17,7 @@ return {
             ["<C-n>"] = { "select_next", "fallback_to_mappings" },
             ["<C-b>"] = { "scroll_documentation_up", "fallback" },
             ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+            ["<C-s>"] = { "show_documentation", "hide_documentation", "show_signature", "hide_signature", "fallback" },
         },
         appearance = {
             nerd_font_variant = "mono",
@@ -25,7 +25,7 @@ return {
         cmdline = {
             keymap = {
                 preset = "none",
-                ["<C-k>"] = { "show", "hide" },
+                ["<C-k>"] = { "show", "hide", "fallback" },
                 ["<C-l>"] = { "select_and_accept", "fallback" },
                 ["<C-y>"] = { "accept", "fallback" },
                 ["<C-e>"] = { "cancel", "fallback" },
