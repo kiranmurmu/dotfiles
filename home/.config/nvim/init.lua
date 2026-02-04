@@ -4,6 +4,6 @@ if vim.g.vscode then
 end
 -- Load lua modules
 require("config.options")
-require("config.keymaps")
 require("config.terminal")
 require("config.lazy")
+require("config.keymaps")
