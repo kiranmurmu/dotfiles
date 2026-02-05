@@ -14,7 +14,7 @@ return {
         },
         direction = "float",
         float_opts = {
-            border = "curved",
+            border = "single",
             title_pos = "center",
         },
     },

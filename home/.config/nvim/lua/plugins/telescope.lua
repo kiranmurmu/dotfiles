@@ -12,6 +12,11 @@ return {
             prompt_prefix = "  ",
             selection_caret = "  ",
             entry_prefix = "  ",
+            borderchars = {
+                prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            },
             mappings = {
                 i = {
                     ["<C-u>"] = require("telescope.actions").results_scrolling_up,
