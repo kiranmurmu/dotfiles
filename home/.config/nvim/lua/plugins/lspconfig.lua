@@ -2,16 +2,8 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        {
-            "mason-org/mason-lspconfig.nvim",
-            opts = {
-                ensure_installed = { "lua_ls" },
-                automatic_enable = {
-                    exclude = { "lua_ls" },
-                },
-            },
-        },
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
         "saghen/blink.cmp",
     },
     opts = {
