@@ -30,10 +30,11 @@ return {
     config = function(_, opts)
         -- Setup custom lsp servers
         local blink_cmp = require("blink.cmp")
-        local lspconfig = require("lspconfig")
         for server, config in pairs(opts.servers) do
             config.capabilities = blink_cmp.get_lsp_capabilities(config.capabilities)
-            lspconfig[server].setup(config)
+            -- Nvim 0.11+ lsp config
+            vim.lsp.config(server, config)
+            vim.lsp.enable(server)
         end
         -- Diagnostics config
         vim.diagnostic.config({
