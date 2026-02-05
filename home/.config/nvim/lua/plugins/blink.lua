@@ -2,7 +2,10 @@
 return {
     "saghen/blink.cmp",
     version = "1.*",
-    dependencies = { "folke/lazydev.nvim" },
+    dependencies = {
+        "folke/lazydev.nvim",
+        "Fildo7525/pretty_hover",
+    },
     opts_extend = { "sources.default" },
     opts = {
         keymap = {
@@ -51,6 +54,14 @@ return {
                     max_width = math.floor(vim.o.columns * 0.4),
                     max_height = math.floor(vim.o.lines * 0.5),
                 },
+                draw = function(opts)
+                    if opts.item and opts.item.documentation and opts.item.documentation.value then
+                        local pretty_hover = require("pretty_hover.parser")
+                        local out = pretty_hover.parse(opts.item.documentation.value)
+                        opts.item.documentation.value = out:string()
+                    end
+                    opts.default_implementation(opts)
+                end,
             },
             list = { selection = { auto_insert = false } },
             accept = { auto_brackets = { enabled = false } },
