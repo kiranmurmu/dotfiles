@@ -1,7 +1,6 @@
--- lua/plugins/example.lua
+-- lua/plugins/example/init.lua
 return {
-    dir = vim.fn.stdpath("config").."/lua/plugins",
-    name = "example",
+    "kiranmurmu/example",
     enabled = true,
     opts = {},
     config = function()
