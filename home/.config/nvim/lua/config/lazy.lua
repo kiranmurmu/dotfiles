@@ -25,6 +25,12 @@ require("lazy").setup({
         -- import your plugins
         { import = "plugins" },
     },
+    ---@diagnostic disable assign-type-mismatch
+    dev = {
+        path = vim.fn.stdpath("config") .. "/lua/plugins",
+        -- For example {"folke"}
+        patterns = { "kiranmurmu" },
+    },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
