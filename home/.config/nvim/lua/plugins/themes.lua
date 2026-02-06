@@ -31,15 +31,17 @@ return colorscheme("kanagawa", {
                     theme = {
                         wave = {
                             ui = {
-                                bg_visual  = "#363646",
+                                bg_visual = "#2a2a37",
+                                bg_search = "#54546d",
+                            },
+                            syn = {
+                                constant = "#d7e3d8",
+                                identifier = "#f9d791",
                             },
                         },
                         all = {
                             ui = {
                                 bg_gutter = "none",
-                            },
-                            syn = {
-                                constant   = "none",
                             },
                         },
                     },
