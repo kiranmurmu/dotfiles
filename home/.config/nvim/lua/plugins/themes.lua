@@ -35,7 +35,7 @@ return colorscheme("kanagawa", {
                                 bg_search = "#54546d",
                             },
                             syn = {
-                                constant = "#d7e3d8",
+                                constant = "#dcd7ba",
                                 identifier = "#f9d791",
                             },
                         },
