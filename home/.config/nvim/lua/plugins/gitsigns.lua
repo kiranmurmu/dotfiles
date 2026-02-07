@@ -2,8 +2,10 @@
 return {
     "lewis6991/gitsigns.nvim",
     opts = {
+        word_diff = false,
         preview_config = {
             style = "minimal",
+            border = "single",
             relative = "cursor",
             row = 1,
             col = 0
