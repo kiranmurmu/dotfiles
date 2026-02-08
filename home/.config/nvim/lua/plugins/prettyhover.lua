@@ -31,7 +31,7 @@ return {
         },
     },
     init = function(self, props)
-        props = self.props or {}
+        props = props or self.props or {}
         vim.diagnostic.config(props.diagnostic or {})
     end,
     keys = function()
