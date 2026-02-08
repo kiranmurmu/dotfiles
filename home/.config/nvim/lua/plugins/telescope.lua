@@ -41,6 +41,7 @@ return {
             },
             extensions = {
                 file_browser = {
+                    hijack_netrw = true,
                     hidden = true,
                     git_status = false,
                     path = "%:p:h",
