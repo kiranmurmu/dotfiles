@@ -1,49 +1,54 @@
 -- lua/plugins/telescope.lua
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
+    version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
     },
-    opts = {
-        defaults = {
-            preview = { hide_on_startup = true },
-            prompt_prefix = "  ",
-            selection_caret = "  ",
-            entry_prefix = "  ",
-            borderchars = {
-                prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-                results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-                preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-            },
-            mappings = {
-                i = {
-                    ["<C-u>"] = require("telescope.actions").results_scrolling_up,
-                    ["<C-d>"] = require("telescope.actions").results_scrolling_down,
+    opts = function()
+        local actions = require("telescope.actions")
+        local actions_layout = require("telescope.actions.layout")
+        return {
+            defaults = {
+                preview = { hide_on_startup = true },
+                prompt_prefix = "  ",
+                selection_caret = "  ",
+                entry_prefix = "  ",
+                borderchars = {
+                    prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                    results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                    preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
                 },
-            },
-        },
-        pickers = {
-            buffers = {
                 mappings = {
                     i = {
-                        ["<M-d>"] = require("telescope.actions").delete_buffer,
+                        ["<C-u>"] = actions.results_scrolling_up,
+                        ["<C-d>"] = actions.results_scrolling_down,
                     },
                 },
             },
-        },
-        extensions = {
-            file_browser = {
-                hidden = true,
-                git_status = false,
-                path = "%:p:h",
+            pickers = {
+                buffers = {
+                    mappings = {
+                        i = {
+                            ["<M-d>"] = actions.delete_buffer,
+                        },
+                    },
+                },
             },
-        },
-    },
-    config = function(self)
+            extensions = {
+                file_browser = {
+                    hidden = true,
+                    git_status = false,
+                    path = "%:p:h",
+                },
+            }
+        }
+    end,
+    config = function(self, opts)
+        opts = opts or self.opts or {}
         local telescope = require("telescope")
-        telescope.setup(self.opts)
+        telescope.setup(opts)
         telescope.load_extension("file_browser")
     end,
     keys = function()
