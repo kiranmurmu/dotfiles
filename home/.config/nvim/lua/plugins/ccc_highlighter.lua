@@ -1,4 +1,4 @@
--- lua/plugins/ccc.lua
+-- lua/plugins/ccc_highlighter.lua
 return {
     "uga-rosa/ccc.nvim",
     opts = {

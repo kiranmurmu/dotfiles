@@ -1,4 +1,4 @@
--- lua/plugins/prettyhover.lua
+-- lua/plugins/pretty_hover.lua
 return {
     "Fildo7525/pretty_hover",
     event = "LspAttach",

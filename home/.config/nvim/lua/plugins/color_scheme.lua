@@ -1,4 +1,4 @@
--- lua/plugins/themes.lua
+-- lua/plugins/color_scheme.lua
 
 local function colorscheme(name, config)
     for _, theme in ipairs(config.themes) do

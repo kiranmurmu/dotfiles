@@ -1,4 +1,4 @@
--- lua/plugins/masonlspconfig.lua
+-- lua/plugins/mason_lspconfig.lua
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
