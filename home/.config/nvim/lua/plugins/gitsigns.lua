@@ -44,6 +44,8 @@ return {
             { "<C-h>r", mode = { "v" }, methods.reset_hunk, desc = "Gitsigns: reset hunk" },
             { "<C-h>o", mode = { "n" }, gitsigns.preview_hunk, desc = "Gitsigns: preview hunk open" },
             { "<C-h>i", mode = { "n" }, gitsigns.preview_hunk_inline, desc = "Gitsigns: preview hunk inline" },
+            { "<C-h>bs", mode = { "n" }, gitsigns.stage_buffer, desc = "Gitsigns: buffer stage" },
+            { "<C-h>br", mode = { "n" }, gitsigns.reset_buffer, desc = "Gitsigns: buffer reset" },
         }
     end
 }
