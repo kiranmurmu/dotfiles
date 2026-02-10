@@ -18,9 +18,9 @@ return {
     keys = function()
         local flash = require("flash")
         return {
-            { "gl", mode = { "o" }, flash.remote, desc = "Flash: perform motions in remote locations" },
-            { "gs", mode = { "n", "x", "o" }, flash.jump, desc = "Flash: standalone jumping mode similar to search" },
-            { "gh", mode = { "n", "x", "o" }, flash.treesitter, desc = "Flash: quick selection of a specific treesitter node" },
+            { "r", mode = { "o" }, flash.remote, desc = "Flash: perform motions in remote locations" },
+            { "x", mode = { "o" }, flash.treesitter, desc = "Flash: quick operation of a specific treesitter node" },
+            { "<leader>s", mode = { "n", "x" }, flash.jump, desc = "Flash: standalone jumping mode similar to search" },
         }
     end
 }
