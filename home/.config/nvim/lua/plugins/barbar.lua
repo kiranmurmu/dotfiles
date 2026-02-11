@@ -8,6 +8,13 @@ return {
     },
     init = function()
         vim.g.barbar_auto_setup = false
+        vim.api.nvim_create_user_command(
+            "BufferCreate",
+            function()
+                vim.api.nvim_create_buf(true, false)
+            end,
+            { desc = "Creates a new, empty, unnamed buffer" }
+        )
     end,
     opts = {
         auto_hide = false,
@@ -109,11 +116,11 @@ return {
         { "<M-]>", mode = { "n" }, "<cmd>BufferMoveNext<CR>", desc = "Barbar: buffer move next" },
         { "<M-{>", mode = { "n" }, "<cmd>BufferScrollLeft<CR>", desc = "Barbar: buffer scroll left" },
         { "<M-}>", mode = { "n" }, "<cmd>BufferScrollRight<CR>", desc = "Barbar: buffer scroll right" },
-        { "<leader>bn", mode = { "n" }, "<cmd>enew<CR>", desc = "Barbar: buffer edit new" },
+        { "<leader>bn", mode = { "n" }, "<cmd>BufferCreate<CR>", desc = "Barbar: buffer create" },
         { "<leader>bp", mode = { "n" }, "<cmd>BufferPin<CR>", desc = "Barbar: buffer pin or unpin" },
         { "<leader>bd", mode = { "n" }, "<cmd>BufferDelete<CR>", desc = "Barbar: buffer delete" },
         { "<leader>bc", mode = { "n" }, "<cmd>BufferClose<CR>", desc = "Barbar: buffer close" },
-        { "<leader>br", mode = { "n" }, "<cmd>BufferRestore<CR>", desc = "Barbar: buffer restore" },
+        { "<leader>bu", mode = { "n" }, "<cmd>BufferRestore<CR>", desc = "Barbar: buffer restore" },
         { "<leader>bw", mode = { "n" }, "<cmd>BufferWipeout<CR>", desc = "Barbar: buffer wipeout" },
         { "<leader>b1", mode = { "n" }, "<cmd>BufferFirst<CR>", desc = "Barbar: buffer first" },
         { "<leader>b2", mode = { "n" }, "<cmd>BufferGoto 2<CR>", desc = "Barbar: goto buffer 2" },
@@ -125,15 +132,15 @@ return {
         { "<leader>b8", mode = { "n" }, "<cmd>BufferGoto 8<CR>", desc = "Barbar: goto buffer 8" },
         { "<leader>b9", mode = { "n" }, "<cmd>BufferGoto 9<CR>", desc = "Barbar: goto buffer 9" },
         { "<leader>b0", mode = { "n" }, "<cmd>BufferLast<CR>", desc = "Barbar: buffer last" },
-        { "<leader>bis", mode = { "n" }, "<cmd>BufferPick<CR>", desc = "Barbar: buffer index select" },
-        { "<leader>bid", mode = { "n" }, "<cmd>BufferPickDelete<CR>", desc = "Barbar: buffer index delete" },
-        { "<leader>bxc", mode = { "n" }, "<cmd>BufferCloseAllButCurrent<CR>", desc = "Barbar: buffer close all but current" },
-        { "<leader>bxp", mode = { "n" }, "<cmd>BufferCloseAllButPinned<CR>", desc = "Barbar: buffer close all but pinned" },
-        { "<leader>bxo", mode = { "n" }, "<cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Barbar: buffer close all but current or pinned" },
-        { "<leader>bxv", mode = { "n" }, "<cmd>BufferCloseAllButVisible<CR>", desc = "Barbar: buffer close all but visible" },
-        { "<leader>bxu", mode = { "n" }, "<cmd>BufferCloseBuffersLeft<CR>", desc = "Barbar: buffers close left" },
-        { "<leader>bxk", mode = { "n" }, "<cmd>BufferCloseBuffersRight<CR>", desc = "Barbar: buffers close right" },
-        { "<leader>bms", mode = { "n" }, "<cmd>BufferMoveStart<CR>", desc = "Barbar: buffer move start" },
+        { "<leader>bs", mode = { "n" }, "<cmd>BufferPick<CR>", desc = "Barbar: buffer index select" },
+        { "<leader>bx", mode = { "n" }, "<cmd>BufferPickDelete<CR>", desc = "Barbar: buffer index delete" },
+        { "<leader>brc", mode = { "n" }, "<cmd>BufferCloseAllButCurrent<CR>", desc = "Barbar: buffer remove all but current" },
+        { "<leader>brp", mode = { "n" }, "<cmd>BufferCloseAllButPinned<CR>", desc = "Barbar: buffer remove all but pinned" },
+        { "<leader>bro", mode = { "n" }, "<cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Barbar: buffer remove all but current or pinned" },
+        { "<leader>brv", mode = { "n" }, "<cmd>BufferCloseAllButVisible<CR>", desc = "Barbar: buffer remove all but visible" },
+        { "<leader>bru", mode = { "n" }, "<cmd>BufferCloseBuffersLeft<CR>", desc = "Barbar: buffers remove left" },
+        { "<leader>brk", mode = { "n" }, "<cmd>BufferCloseBuffersRight<CR>", desc = "Barbar: buffers remove right" },
+        { "<leader>bgg", mode = { "n" }, "<cmd>BufferMoveStart<CR>", desc = "Barbar: buffer move to start" },
         { "<leader>bm1", mode = { "n" }, "<cmd>BufferMove 1<CR>", desc = "Barbar: move buffer by 1" },
         { "<leader>bm2", mode = { "n" }, "<cmd>BufferMove 2<CR>", desc = "Barbar: move buffer by 2" },
         { "<leader>bm3", mode = { "n" }, "<cmd>BufferMove 3<CR>", desc = "Barbar: move buffer by 3" },
