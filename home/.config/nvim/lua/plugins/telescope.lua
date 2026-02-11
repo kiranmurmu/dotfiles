@@ -8,7 +8,47 @@ return {
     },
     opts = function()
         local actions = require("telescope.actions")
+        local actions_state = require("telescope.actions.state")
         local actions_layout = require("telescope.actions.layout")
+        local actions_set = require("telescope.actions.set")
+        local user_actions = {}
+        do
+            ---@class find_files
+            user_actions.find_files = {}
+            do
+                ---@class find_files
+                local find_files = user_actions.find_files
+                find_files.select = actions_set.select
+                find_files.get_current_picker = actions_state.get_current_picker
+
+                ---@param prompt_bufnr number
+                function find_files.select_multiple(prompt_bufnr)
+                    ---@class find_files
+                    local self = find_files
+
+                    ---@class picker
+                    ---@field get_multi_selection fun(): table<number, [string]>
+                    local picker = self.get_current_picker(prompt_bufnr)
+                    local picker_selected = picker:get_multi_selection()
+
+                    ---@param picker_entry [string]
+                    ---@param command "edit"|"badd"
+                    function self.edit(picker_entry, command)
+                        command = command or "badd"
+                        local string_cmd = table.concat({ command, picker_entry[1]}, " ")
+                        local parsed_cmd = vim.api.nvim_parse_cmd(string_cmd, {})
+                        ---@diagnostic disable-next-line param-type-mismatch
+                        vim.api.nvim_cmd(parsed_cmd, { output = false })
+                    end
+
+                    self.select(prompt_bufnr, "default")
+                    for _, picker_entry in ipairs(picker_selected) do
+                        self.edit(picker_entry, "badd")
+                    end
+                end
+            end
+        end
+
         return {
             defaults = {
                 preview = { hide_on_startup = true },
@@ -35,6 +75,13 @@ return {
                     mappings = {
                         i = {
                             ["<M-d>"] = actions.delete_buffer,
+                        },
+                    },
+                },
+                find_files = {
+                    mappings = {
+                        i = {
+                            ["<CR>"] = user_actions.find_files.select_multiple,
                         },
                     },
                 },
