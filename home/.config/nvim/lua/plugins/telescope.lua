@@ -108,7 +108,7 @@ return {
         return {
             { "<leader>ff", mode = { "n" }, builtin.find_files, desc = "Telescope find files" },
             { "<leader>fg", mode = { "n" }, builtin.live_grep, desc = "Telescope find grep" },
-            { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope find diagnostics" },
+            { "<leader>df", mode = { "n" }, builtin.diagnostics, desc = "Telescope find diagnostics" },
             { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope find buffers" },
             { "<leader>ft", mode = { "n" }, builtin.builtin, desc = "Telescope find pickers" },
             { "<leader>fz", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope fuzzy find" },
