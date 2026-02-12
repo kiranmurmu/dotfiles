@@ -11,3 +11,5 @@ vim.keymap.set({ "i" }, "<C-l>", "<Right>", { silent = true, desc = "<CTRL-l> to
 vim.keymap.set({ "c" }, "<C-a>", "<Home>", { noremap = true, silent = false, desc = "<CTRL-a> to <Home> in command-line mode" })
 vim.keymap.set({ "c" }, "<C-f>", "<Right>", { noremap = true, silent = false, desc = "<CTRL-f> to <Right> in command-line mode" })
 vim.keymap.set({ "c" }, "<C-b>", "<Left>", { noremap = true, silent = false, desc = "<CTRL-b> to <Left> in command-line mode" })
+-- Window keymaps
+vim.keymap.set({ "n" }, "<leader>w", "<C-W>", { silent = true, desc = "Use window commands with <leader> key" })
