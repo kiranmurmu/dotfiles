@@ -38,14 +38,14 @@ return {
             { "]c", mode = { "n" }, methods.nav_next, desc = "Gitsigns: next hunk" },
             { "[c", mode = { "n" }, methods.nav_prev, desc = "Gitsigns: previous hunk" },
             { "ih", mode = { "o", "x" }, gitsigns.select_hunk, desc = "Gitsigns: select hunk" },
-            { "<C-g>s", mode = { "n" }, gitsigns.stage_hunk, desc = "Gitsigns: stage hunk" },
-            { "<C-g>r", mode = { "n" }, gitsigns.reset_hunk, desc = "Gitsigns: reset hunk" },
-            { "<C-g>s", mode = { "v" }, methods.stage_hunk, desc = "Gitsigns: stage hunk" },
-            { "<C-g>r", mode = { "v" }, methods.reset_hunk, desc = "Gitsigns: reset hunk" },
-            { "<C-g>k", mode = { "n" }, gitsigns.preview_hunk, desc = "Gitsigns: preview hunk in-hover" },
-            { "<C-g>i", mode = { "n" }, gitsigns.preview_hunk_inline, desc = "Gitsigns: preview hunk in-line" },
-            { "<C-g>bs", mode = { "n" }, gitsigns.stage_buffer, desc = "Gitsigns: buffer stage" },
-            { "<C-g>br", mode = { "n" }, gitsigns.reset_buffer, desc = "Gitsigns: buffer reset" },
+            { "<leader>gs", mode = { "n" }, gitsigns.stage_hunk, desc = "Gitsigns: stage hunk" },
+            { "<leader>gr", mode = { "n" }, gitsigns.reset_hunk, desc = "Gitsigns: reset hunk" },
+            { "<leader>gs", mode = { "v" }, methods.stage_hunk, desc = "Gitsigns: stage hunk" },
+            { "<leader>gr", mode = { "v" }, methods.reset_hunk, desc = "Gitsigns: reset hunk" },
+            { "<leader>gk", mode = { "n" }, gitsigns.preview_hunk, desc = "Gitsigns: preview hunk in-hover" },
+            { "<leader>gi", mode = { "n" }, gitsigns.preview_hunk_inline, desc = "Gitsigns: preview hunk in-line" },
+            { "<leader>gS", mode = { "n" }, gitsigns.stage_buffer, desc = "Gitsigns: buffer stage" },
+            { "<leader>gR", mode = { "n" }, gitsigns.reset_buffer, desc = "Gitsigns: buffer reset" },
         }
     end
 }
