@@ -119,6 +119,10 @@ return {
             { "<leader>fj", mode = { "n" }, builtin.jumplist, desc = "Telescope find jumplist" },
             { "<leader>fm", mode = { "n" }, builtin.marks, desc = "Telescope find marks" },
             { "<leader>fs", mode = { "n" }, builtin.spell_suggest, desc = "Telescope spell suggest" },
+            { "<leader>fl", mode = { "n" }, builtin.quickfix, desc = "Telescope quickfix list" },
+            { "<leader>ll", mode = { "n" }, builtin.loclist, desc = "Telescope location list" },
+            { "<leader>gg", mode = { "n" }, builtin.git_status, desc = "Telescope git status" },
+            { "<leader>gf", mode = { "n" }, builtin.git_files, desc = "Telescope git files" },
         }
     end
 }
