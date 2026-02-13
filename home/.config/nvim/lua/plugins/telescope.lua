@@ -13,12 +13,28 @@ return {
         local actions_set = require("telescope.actions.set")
         local user_actions = {}
         do
+            ---@class defaults
+            user_actions.defaults = {}
+            do
+                ---@class defaults
+                local defaults = user_actions.defaults
+                ---@param command string
+                ---@param argument string
+                function defaults.execute(command, argument)
+                    command = command or "enew"
+                    local string_cmd = table.concat({ command, argument }, " ")
+                    local parsed_cmd = vim.api.nvim_parse_cmd(string_cmd, {})
+                    ---@diagnostic disable-next-line param-type-mismatch
+                    vim.api.nvim_cmd(parsed_cmd, { output = false })
+                end
+            end
             ---@class find_files
             user_actions.find_files = {}
             do
                 ---@class find_files
                 local find_files = user_actions.find_files
                 find_files.select = actions_set.select
+                find_files.execute = user_actions.defaults.execute
                 find_files.get_current_picker = actions_state.get_current_picker
 
                 ---@param prompt_bufnr number
@@ -26,24 +42,12 @@ return {
                     ---@class find_files
                     local self = find_files
 
-                    ---@class picker
-                    ---@field get_multi_selection fun(): table<number, [string]>
                     local picker = self.get_current_picker(prompt_bufnr)
                     local picker_selected = picker:get_multi_selection()
 
-                    ---@param picker_entry [string]
-                    ---@param command "edit"|"badd"
-                    function self.edit(picker_entry, command)
-                        command = command or "badd"
-                        local string_cmd = table.concat({ command, picker_entry[1]}, " ")
-                        local parsed_cmd = vim.api.nvim_parse_cmd(string_cmd, {})
-                        ---@diagnostic disable-next-line param-type-mismatch
-                        vim.api.nvim_cmd(parsed_cmd, { output = false })
-                    end
-
                     self.select(prompt_bufnr, "default")
                     for _, picker_entry in ipairs(picker_selected) do
-                        self.edit(picker_entry, "badd")
+                        self.execute("badd", picker_entry[1])
                     end
                 end
             end
@@ -84,6 +88,9 @@ return {
                 find_files = {
                     mappings = {
                         i = {
+                            ["<CR>"] = user_actions.find_files.select_multiple,
+                        },
+                        n = {
                             ["<CR>"] = user_actions.find_files.select_multiple,
                         },
                     },
