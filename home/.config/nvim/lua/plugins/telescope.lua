@@ -76,6 +76,9 @@ return {
                         i = {
                             ["<M-d>"] = actions.delete_buffer,
                         },
+                        n = {
+                            ["<M-d>"] = actions.nop,
+                        },
                     },
                 },
                 find_files = {
