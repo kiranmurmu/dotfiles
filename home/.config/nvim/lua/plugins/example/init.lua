@@ -18,7 +18,7 @@ return {
                 local example = require("example")
                 example:greet(input, user)
             end,
-            { bang = true, desc = "Great current user!" }
+            { bang = true, desc = "Greet current user!" }
         )
     end,
 }
