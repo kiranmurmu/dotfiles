@@ -51,6 +51,12 @@ return {
                     left = "▏ ", right = "",
                 },
             },
+            current = {
+                filetype = { custom_colors = false },
+            },
+            visible = {
+                filetype = { custom_colors = false },
+            },
             inactive = {
                 filetype = { custom_colors = false },
                 separator = {
