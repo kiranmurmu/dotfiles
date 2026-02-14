@@ -38,6 +38,9 @@ return {
             separator = {
                 left = "▏", right = "",
             },
+            scroll = {
+                left = "▏❮ ", right = " ❯▕",
+            },
             separator_at_end = true,
             filetype = { custom_colors = true },
             modified = { button = " 󰅙" },
