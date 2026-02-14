@@ -79,12 +79,14 @@ return {
         local hg_visible = { "BufferDefaultVisible" }
         local hg_inactive_sign = { "BufferDefaultInactiveSign" }
         local hg_inactive_icon = { "BufferDefaultInactiveIcon" }
+        local hg_alternate = { "BufferDefaultAlternate" }
 
         local bg_current = hl.bg_or_default(hg_current, "none")
         local bg_inactive = hl.bg_or_default(hg_inactive, "none")
         local bg_visible = hl.bg_or_default(hg_visible, "none")
         local fg_current = hl.fg_or_default(hg_current, "#efefef", 255)
         local fg_visible = hl.fg_or_default(hg_inactive, "#efefef", 255)
+        local fg_alternate = hl.fg_or_default(hg_alternate, "#efefef", 255)
         local fg_inactive_sign = hl.fg_or_default(hg_inactive_sign, "#efefef", 255)
         local fg_inactive_icon = hl.fg_or_default(hg_inactive_icon, "#efefef", 255)
 
@@ -92,29 +94,35 @@ return {
         local hl_current_mod = { fg = fg_visible.gui, bg = bg_current.gui }
         local hl_current_btn = { fg = fg_visible.gui, bg = bg_current.gui }
         local hl_current_mod_btn = { fg = fg_current.gui, bg = bg_current.gui }
+        local hl_current_target = { fg = fg_alternate.gui, bg = bg_current.gui }
         local hl_current_sign = { fg = fg_visible.gui, bg = bg_current.gui }
         local hl_visible = { fg = fg_visible.gui, bg = bg_visible.gui }
         local hl_visible_mod = { fg = fg_visible.gui, bg = bg_visible.gui }
         local hl_visible_mod_btn = { fg = fg_current.gui, bg = bg_visible.gui }
+        local hl_visible_target = { fg = fg_alternate.gui, bg = bg_visible.gui }
         local hl_visible_sign = { fg = fg_visible.gui, bg = bg_visible.gui }
         local hl_inactive = { fg = fg_inactive_sign.gui, bg = bg_inactive.gui }
         local hl_inactive_icon = { fg = fg_inactive_icon.gui, bg = bg_inactive.gui }
         local hl_inactive_mod = { fg = fg_inactive_sign.gui, bg = bg_inactive.gui }
         local hl_inactive_mod_btn = { fg = fg_visible.gui, bg = bg_inactive.gui }
+        local hl_inactive_target = { fg = fg_alternate.gui, bg = bg_inactive.gui }
         local hl_inactive_pin = { fg = fg_inactive_sign.gui, bg = bg_inactive.gui }
 
         vim.api.nvim_set_hl(0, "BufferCurrent", hl_current)
         vim.api.nvim_set_hl(0, "BufferCurrentSign", hl_current_sign)
+        vim.api.nvim_set_hl(0, "BufferCurrentTarget", hl_current_target)
         vim.api.nvim_set_hl(0, "BufferCurrentMod", hl_current_mod)
         vim.api.nvim_set_hl(0, "BufferCurrentBtn", hl_current_btn)
         vim.api.nvim_set_hl(0, "BufferCurrentModBtn", hl_current_mod_btn)
         vim.api.nvim_set_hl(0, "BufferVisible", hl_visible)
         vim.api.nvim_set_hl(0, "BufferVisibleMod", hl_visible_mod)
         vim.api.nvim_set_hl(0, "BufferVisibleModBtn", hl_visible_mod_btn)
+        vim.api.nvim_set_hl(0, "BufferVisibleTarget", hl_visible_target)
         vim.api.nvim_set_hl(0, "BufferVisibleSign", hl_visible_sign)
         vim.api.nvim_set_hl(0, "BufferInactive", hl_inactive)
         vim.api.nvim_set_hl(0, "BufferInactiveMod", hl_inactive_mod)
         vim.api.nvim_set_hl(0, "BufferInactiveModBtn", hl_inactive_mod_btn)
+        vim.api.nvim_set_hl(0, "BufferInactiveTarget", hl_inactive_target)
         vim.api.nvim_set_hl(0, "BufferInactiveIcon", hl_inactive_icon)
         vim.api.nvim_set_hl(0, "BufferInactivePin", hl_inactive_pin)
     end,
