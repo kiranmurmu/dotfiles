@@ -66,6 +66,7 @@ return {
                 },
                 mappings = {
                     i = {
+                        ["<Esc>"] = actions.close,
                         ["<C-u>"] = actions.results_scrolling_up,
                         ["<C-d>"] = actions.results_scrolling_down,
                         ["<C-k>"] = actions_layout.toggle_preview,
