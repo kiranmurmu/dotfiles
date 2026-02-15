@@ -37,7 +37,6 @@ return {
     keys = function()
         local mod = { pretty_hover = require("pretty_hover") }
         return {
-            { "<leader>dk", mode = { "n" }, vim.diagnostic.open_float, desc = "Show diagnostics in a floating window" },
             { "<C-k>", mode = { "n" }, vim.diagnostic.open_float, desc = "Show diagnostics in a floating window" },
             { "<S-k>", mode = { "n" }, mod.pretty_hover.hover, desc = "Displays hover information about the symbol under the cursor" },
         }
