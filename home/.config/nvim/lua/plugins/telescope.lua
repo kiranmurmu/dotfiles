@@ -121,7 +121,7 @@ return {
             { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope find diagnostics" },
             { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope find buffers" },
             { "<leader>fw", mode = { "n" }, builtin.builtin, desc = "Telescope find picker windows" },
-            { "<leader>fs", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope file search" },
+            { "<leader>fs", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope fuzzy search" },
             { "<leader>fe", mode = { "n" }, file_browser.file_browser, desc = "Telescope file explorer" },
             { "<leader>fh", mode = { "n" }, builtin.help_tags, desc = "Telescope find help-tags" },
             { "<leader>fc", mode = { "n" }, builtin.commands, desc = "Telescope find commands" },
