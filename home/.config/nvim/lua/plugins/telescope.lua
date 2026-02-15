@@ -118,9 +118,9 @@ return {
         return {
             { "<leader>ff", mode = { "n" }, builtin.find_files, desc = "Telescope find files" },
             { "<leader>fg", mode = { "n" }, builtin.live_grep, desc = "Telescope file grep" },
-            { "<leader>dd", mode = { "n" }, builtin.diagnostics, desc = "Telescope diagnostics" },
+            { "<leader>fd", mode = { "n" }, builtin.diagnostics, desc = "Telescope find diagnostics" },
             { "<leader>fb", mode = { "n" }, builtin.buffers, desc = "Telescope find buffers" },
-            { "<leader>fd", mode = { "n" }, builtin.builtin, desc = "Telescope find pickers" },
+            { "<leader>fw", mode = { "n" }, builtin.builtin, desc = "Telescope find picker windows" },
             { "<leader>fs", mode = { "n" }, builtin.current_buffer_fuzzy_find, desc = "Telescope file search" },
             { "<leader>fe", mode = { "n" }, file_browser.file_browser, desc = "Telescope file explorer" },
             { "<leader>fh", mode = { "n" }, builtin.help_tags, desc = "Telescope find help-tags" },
@@ -135,6 +135,7 @@ return {
             { "<leader>ll", mode = { "n" }, builtin.loclist, desc = "Telescope location list" },
             { "<leader>gg", mode = { "n" }, builtin.git_status, desc = "Telescope git status" },
             { "<leader>gf", mode = { "n" }, builtin.git_files, desc = "Telescope git files" },
+            { "<leader>gb", mode = { "n" }, builtin.git_bcommits, desc = "Telescope git buffer commits" },
         }
     end
 }
