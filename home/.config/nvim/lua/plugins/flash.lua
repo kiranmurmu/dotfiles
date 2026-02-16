@@ -5,6 +5,7 @@ return {
     opts = {
         modes = {
             char = {
+                enabled = false,
                 jump_labels = false,
                 highlight = { backdrop = false },
                 char_actions = function ()
