@@ -32,7 +32,7 @@ return {
                 left = "▏", right = "",
             },
             scroll = {
-                left = "▏❮ ", right = " ❯▕",
+                left = "▏", right = "▕",
             },
             separator_at_end = true,
             filetype = { custom_colors = true },
