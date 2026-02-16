@@ -8,13 +8,6 @@ return {
     },
     init = function()
         vim.g.barbar_auto_setup = false
-        vim.api.nvim_create_user_command(
-            "BufferCreate",
-            function()
-                vim.api.nvim_create_buf(true, false)
-            end,
-            { desc = "Creates a new, empty, unnamed buffer" }
-        )
     end,
     opts = {
         auto_hide = false,
@@ -89,22 +82,33 @@ return {
                 render.update()
             end
 
+            function self.buf_create_empty()
+                vim.api.nvim_create_buf(true, false)
+            end
+
+            vim.api.nvim_create_user_command(
+                "BufferCreate",
+                self.buf_create_empty,
+                { desc = "Creates a new, empty, unnamed buffer" }
+            )
+
             vim.api.nvim_create_user_command(
                 "BufferCloseAll",
                 self.buf_close_all,
                 { desc = "Close all buffers" }
             )
         end,
+        function(_, spec)
+            for _, key_map in ipairs(spec.key_maps or {}) do
+                vim.keymap.set(key_map.mode, key_map[1], key_map[2], { silent = true, desc = key_map.desc })
+            end
+        end
     },
     config = function(self, opts)
         opts = opts or {}
         local _ = require("barbar").setup(opts)
         local hl = require("barbar.utils.highlight")
         self.api:init(self, opts)
-
-        for _, key_map in ipairs(self.key_maps) do
-            vim.keymap.set(key_map.mode, key_map[1], key_map[2], { silent = true, desc = key_map.desc })
-        end
 
         local hg_current = { "BufferDefaultCurrent" }
         local hg_inactive = { "BufferDefaultInactive" }
