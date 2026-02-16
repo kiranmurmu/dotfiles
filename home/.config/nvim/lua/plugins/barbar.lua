@@ -65,10 +65,42 @@ return {
             },
         },
     },
+    api = {
+        init = function(self, spec, opts)
+            spec = spec or {}
+            opts = opts or spec.opts or {}
+
+            for _, method in ipairs(self) do
+                if type(method) == "function" then
+                    method(self, spec)
+                end
+            end
+        end,
+        function(self)
+            local render = require("barbar.ui.render")
+            local state = require("barbar.state")
+            local bbye = require("barbar.bbye")
+
+            function self.buf_close_all()
+                for _, buffer_number in ipairs(state.buffers) do
+                    bbye.bdelete(false, buffer_number)
+                end
+
+                render.update()
+            end
+
+            vim.api.nvim_create_user_command(
+                "BufferCloseAll",
+                self.buf_close_all,
+                { desc = "Close all buffers" }
+            )
+        end,
+    },
     config = function(self, opts)
         opts = opts or {}
         local _ = require("barbar").setup(opts)
         local hl = require("barbar.utils.highlight")
+        self.api:init(self, opts)
 
         for _, key_map in ipairs(self.key_maps) do
             vim.keymap.set(key_map.mode, key_map[1], key_map[2], { silent = true, desc = key_map.desc })
@@ -151,6 +183,7 @@ return {
         { "<leader>b0", mode = { "n" }, "<cmd>BufferLast<CR>", desc = "Barbar: buffer last" },
         { "<leader>bs", mode = { "n" }, "<cmd>BufferPick<CR>", desc = "Barbar: buffer pick select" },
         { "<leader>bx", mode = { "n" }, "<cmd>BufferPickDelete<CR>", desc = "Barbar: buffer pick delete" },
+        { "<leader>bra", mode = { "n" }, "<cmd>BufferCloseAll<CR>", desc = "Barbar: buffer remove all" },
         { "<leader>brc", mode = { "n" }, "<cmd>BufferCloseAllButCurrent<CR>", desc = "Barbar: buffer remove all but current" },
         { "<leader>brp", mode = { "n" }, "<cmd>BufferCloseAllButPinned<CR>", desc = "Barbar: buffer remove all but pinned" },
         { "<leader>bro", mode = { "n" }, "<cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Barbar: buffer remove all but current or pinned" },
