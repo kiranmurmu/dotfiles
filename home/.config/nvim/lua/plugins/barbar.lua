@@ -190,7 +190,7 @@ return {
         { "<leader>brv", mode = { "n" }, "<cmd>BufferCloseAllButVisible<CR>", desc = "Barbar: buffer remove all but visible" },
         { "<leader>bru", mode = { "n" }, "<cmd>BufferCloseBuffersLeft<CR>", desc = "Barbar: buffers remove left" },
         { "<leader>brk", mode = { "n" }, "<cmd>BufferCloseBuffersRight<CR>", desc = "Barbar: buffers remove right" },
-        { "<leader>bg", mode = { "n" }, "<cmd>BufferMoveStart<CR>", desc = "Barbar: buffer move to start" },
+        { "<leader>bgg", mode = { "n" }, "<cmd>BufferMoveStart<CR>", desc = "Barbar: buffer move to start" },
         { "<leader>bm1", mode = { "n" }, "<cmd>BufferMove 1<CR>", desc = "Barbar: move buffer by 1" },
         { "<leader>bm2", mode = { "n" }, "<cmd>BufferMove 2<CR>", desc = "Barbar: move buffer by 2" },
         { "<leader>bm3", mode = { "n" }, "<cmd>BufferMove 3<CR>", desc = "Barbar: move buffer by 3" },
