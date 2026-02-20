@@ -14,8 +14,9 @@ return {
             insert_mappings = false,
             hidden = true,
             highlights = {
-                border = "Normal",
-                background = "Normal",
+                Normal = { link = "Normal" },
+                NormalFloat = { link = "TelescopeNormal" },
+                FloatBorder = { link = "TelescopeBorder" },
             },
             direction = "float",
             float_opts = {
