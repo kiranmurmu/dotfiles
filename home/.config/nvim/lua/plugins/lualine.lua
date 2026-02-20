@@ -22,7 +22,7 @@ return {
                 { "filename", path = 1, separator = "󰊢" },
                 { "diff" },
             },
-            lualine_x = { "diagnostics", "filesize", "encoding", "fileformat" },
+            lualine_x = { "diagnostics", "filetype", "encoding", "fileformat" },
             lualine_y = { "progress" },
             lualine_z = { "location" },
         }
