@@ -31,6 +31,22 @@ return {
             dir = "%:p:h",
         }
     end,
+    init = function ()
+        local augroup = vim.api.nvim_create_augroup("UserConfigs", { clear = false })
+
+        -- Configure terminal to start in insert mode by default
+        vim.api.nvim_create_autocmd({ "TermOpen", "BufWinEnter" }, {
+            pattern = { "term://*toggleterm#*" },
+            group = augroup,
+            callback = function()
+                local mode = vim.api.nvim_get_mode().mode
+                -- 'nt' is normal mode and 't' is insert mode in the terminal
+                if mode:match("nt") or not mode:match("t") then
+                    vim.schedule(function() vim.cmd("startinsert") end)
+                end
+            end,
+        })
+    end,
     terminal = {
         new = function(self, config)
             config = config or {}
@@ -67,11 +83,7 @@ return {
             local bash = Terminal:new(term.bash)
 
             function term.api.toggle_bash()
-                if vim.api.nvim_get_mode().mode == "nt" then
-                    vim.cmd("startinsert")
-                else
-                    bash:toggle()
-                end
+                bash:toggle()
             end
         end
 
