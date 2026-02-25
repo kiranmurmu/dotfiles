@@ -1,0 +1,7 @@
+[Service]
+ExecStart=/usr/local/bin/xremap --watch=config /usr/local/etc/xremap/config.yml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

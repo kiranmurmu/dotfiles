@@ -1,0 +1,24 @@
+virtual_modifiers:
+  - Menu
+
+modmap:
+  - remap:
+      CapsLock:
+        held: Menu
+        alone: Esc
+        free_hold: true
+
+keymap:
+  - remap:
+      Menu-H: Left
+      Menu-J: Down
+      Menu-K: Up
+      Menu-L: Right
+      Menu-U: CapsLock
+      Menu-I: Insert
+      Menu-O: Esc
+      Menu-P: PageUp
+      Menu-N: PageDown
+      Menu-B: Home
+      Menu-F: End
+      Menu-D: Delete
