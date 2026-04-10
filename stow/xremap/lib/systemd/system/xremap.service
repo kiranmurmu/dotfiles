@@ -1,5 +1,5 @@
 [Service]
-ExecStart=/usr/local/bin/xremap --watch=config /usr/local/etc/xremap/config.yml
+ExecStart=/usr/local/bin/xremap --watch=config,device /usr/local/etc/xremap/config.yml
 Restart=always
 
 [Install]
